@@ -1,0 +1,25 @@
+{
+  "name": "blogento",
+  "version": "0.0.1",
+  "main": "index.js",
+  "description": "Modular, extendable version of my blog platform",
+  "author": "Anton Lantz <anton@trollwebsolutions.se>",
+  "scripts": {
+    "preinstall": "node bin/preinstall"
+  },
+  "dependencies": {
+    "nunjucks":"*",
+    "path":"*",
+    "async":"2.0.0",
+    "http":"*",
+    "express": "4.14.0",
+    "express-session": "*",
+    "serve-favicon": "*",
+    "cookie-parser": "*",
+    "body-parser":"*",
+    "redis": "*",
+    "connect-redis":"*",
+    "passport": "*",
+    "winston": "*"
+  }
+}

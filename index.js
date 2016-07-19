@@ -1,7 +1,10 @@
-var config = require('_/config'),
+var path = require('path');
+global.appRoot = path.resolve(__dirname);
+
+var config = require(path.join(appRoot,'config')),
     http = require('http'),
-    path = require('path'),
     async = require('async'),
+    fallback = require(path.join(appRoot,'/lib/module/fallback')),
     //favicon = require('serve-favicon'),
     redis = require("redis").createClient(),
     cookieParser = require('cookie-parser'),
@@ -17,7 +20,7 @@ var  app = express();
 app.set('view engine', 'html');
 app.set('view cache', false);
 
-nunjucks.configure('lib/view', {
+nunjucks.configure('', {
     autoescape: false,
     noCache: true,
     express: app
@@ -38,6 +41,16 @@ app.use(express.static(path.join(__dirname, 'frontend')))
    .use(passport.initialize())
    .use(passport.session());
 
+
+ // production error handler
+ app.use(function(err, req, res, next) {
+ 	res.status(err.status || 500);
+ 	res.render('error', {
+ 		message: err.message,
+ 		error: {}
+ 	});
+ });
+
 // development error handler
 if (app.get('env') === 'development') {
 	app.use(function(err, req, res, next) {
@@ -49,18 +62,9 @@ if (app.get('env') === 'development') {
 	});
 }
 
-// production error handler
-app.use(function(err, req, res, next) {
-	res.status(err.status || 500);
-	res.render('error', {
-		message: err.message,
-		error: {}
-	});
-});
-
 var server = app.listen(config.port, config.ip, function(){
   var addr = server.address();
   console.log('Server listening at '+addr.address+':'+addr.port);
 });
 
-require('_/layout')(app);
+var router = fallback('@router')(app);

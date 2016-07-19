@@ -1,11 +1,10 @@
 var path = require('path'),
-    coreHtml = require(path.join('_/', 'block', 'coreHtml')),
-    nunjucks = require('nunjucks');
+    fallback = require(path.join(appRoot,'/lib/module/fallback')),
+    coreHtml = fallback('@block/coreHtml');
 
 module.exports = function(data, callback){
 
-
-  data.content.listItem = "cool!";
+  data.content.listItem = "cooler!";
 
   //Instanciate Object
   var blockInstance = new coreHtml(data);

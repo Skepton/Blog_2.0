@@ -8,7 +8,7 @@ module.exports = {
         "header": {
           "name": "header",
           "type": "content",
-          "template": "header.phtml"
+          "template": "header.html"
         },
         "content": {
           "name":"content",
@@ -18,4 +18,4 @@ module.exports = {
       }]
     }
   }]
-};
+}

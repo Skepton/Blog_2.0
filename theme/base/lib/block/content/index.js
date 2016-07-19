@@ -1,13 +1,10 @@
 var path = require('path'),
-    coreHtml = require(path.join('_/', 'block', 'coreHtml'));
-
+    fallback = require(path.join(appRoot,'/lib/module/fallback')),
+    coreHtml = fallback('@block/coreHtml');
 
 module.exports = function(data, callback){
 
-  /// Set data for block rendering
-  data.content.page = {
-    "title": "test"
-  }
+  data.content.listItem = "cool!";
 
   //Instanciate Object
   var blockInstance = new coreHtml(data);

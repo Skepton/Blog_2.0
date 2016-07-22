@@ -1,6 +1,6 @@
 module.exports = [
   {
     "path": "/",
-    "handles": ['default']
+    "handles": ['default','loggedIn']
   }
 ];

@@ -20,6 +20,7 @@ var  app = express();
 app.set('view engine', 'html');
 app.set('view cache', false);
 
+//Template Setup options
 nunjucks.configure('', {
     autoescape: false,
     noCache: true,
@@ -67,4 +68,6 @@ var server = app.listen(config.port, config.ip, function(){
   console.log('Server listening at '+addr.address+':'+addr.port);
 });
 
-var router = fallback('@router')(app);
+fallback('@database')(function(models){
+  fallback('@router')(app, models);
+});

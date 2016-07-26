@@ -2,17 +2,17 @@ module.exports = {
   "blocks": [
     {
       "name": "root",
-      "type": "root",
+      "type": "coreHtml",
       "template": "1column.html",
       "blocks": [
         {
           "name": "header",
-          "type": "content",
+          "type": "coreHtml",
           "template": "header.html",
           "blocks": [
             {
               "name": "headerContent",
-              "type": "content",
+              "type": "coreHtml",
               "template": "header-content.html",
               "blocks": []
             }
@@ -20,8 +20,7 @@ module.exports = {
         },
         {
           "name":"content",
-          "type": "content",
-          "template": "content.html",
+          "type": "blockList",
           "blocks": []
         }
       ]

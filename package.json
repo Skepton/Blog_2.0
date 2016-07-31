@@ -12,6 +12,8 @@
     "path":"*",
     "async":"2.0.0",
     "http":"*",
+    "crypto": "*",
+    "bcryptjs": "*",
     "express": "4.14.0",
     "express-session": "*",
     "sequelize": "*",
@@ -20,7 +22,9 @@
     "body-parser":"*",
     "redis": "*",
     "connect-redis":"*",
+    "connect-flash": "*",
     "passport": "*",
+    "passport-local": "*",
     "winston": "*",
     "json_merger": "*"
   }

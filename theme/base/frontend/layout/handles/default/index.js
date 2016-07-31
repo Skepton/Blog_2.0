@@ -1,29 +1,31 @@
 module.exports = {
+  "name": "root",
+  "type": "coreHtml/root",
+  "template": "1column.html",
   "blocks": [
     {
-      "name": "root",
+        "name":"message",
+        "type":"flashMessage",
+        "template": "message.html",
+        "blocks": []
+    },
+    {
+      "name": "header",
       "type": "coreHtml",
-      "template": "1column.html",
+      "template": "header.html",
       "blocks": [
         {
-          "name": "header",
+          "name": "login",
           "type": "coreHtml",
-          "template": "header.html",
-          "blocks": [
-            {
-              "name": "headerContent",
-              "type": "coreHtml",
-              "template": "header-content.html",
-              "blocks": []
-            }
-          ]
-        },
-        {
-          "name":"content",
-          "type": "blockList",
+          "template": "loginHeader.html",
           "blocks": []
         }
       ]
+    },
+    {
+      "name":"content",
+      "type": "blockList",
+      "blocks": []
     }
   ]
 }

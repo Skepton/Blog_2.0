@@ -10,8 +10,8 @@ var config = require(path.join(appRoot,'config')),
     cookieParser = require('cookie-parser'),
     bodyParser = require('body-parser'),
     nunjucks = require('nunjucks'),
+    flash = require('connect-flash');
     session = require('express-session'),
-    passport = require('passport'),
     RedisStore = require('connect-redis')(session),
     express = require('express');
 
@@ -29,8 +29,8 @@ nunjucks.configure('', {
 
 app.use(express.static(path.join(__dirname, 'frontend')))
    //.use(favicon())
+   .use(bodyParser.urlencoded({extended: false}))
    .use(bodyParser.json())
-   .use(bodyParser.urlencoded({extended: true}))
    .use(cookieParser())
    .use(session({
      store: new RedisStore({client: redis }),
@@ -39,8 +39,7 @@ app.use(express.static(path.join(__dirname, 'frontend')))
      saveUninitialized: false,
      resave: false
    }))
-   .use(passport.initialize())
-   .use(passport.session());
+   .use(flash());
 
 
  // production error handler
@@ -68,6 +67,8 @@ var server = app.listen(config.port, config.ip, function(){
   console.log('Server listening at '+addr.address+':'+addr.port);
 });
 
-fallback('@database')(function(models){
-  fallback('@router')(app, models);
+fallback('@database')(function(db){
+  var passport = fallback('@module/loginHandler')(db);
+  app.use(passport.initialize()).use(passport.session());
+  fallback('@router')(app, db);
 });

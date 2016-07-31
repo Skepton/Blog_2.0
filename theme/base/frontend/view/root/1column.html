@@ -8,10 +8,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
-    {{ header }}
+    {{ childBlocks.message }}
+    {{ childBlocks.header }}
     <main>
       <h1>Hello World</h1>
-      {{ content }}
+      {{ childBlocks.content }}
     </main>
   </body>
 </html>

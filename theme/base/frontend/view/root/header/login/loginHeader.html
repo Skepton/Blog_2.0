@@ -1,0 +1,5 @@
+{% if user %}
+  Logged in as: {{ user.displayname }}
+{% else  %}
+  <a href="/login">Log in</a>
+{% endif %}

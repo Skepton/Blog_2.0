@@ -10,9 +10,9 @@ module.exports = function(sequelize, callback){
   });
   async.eachSeries(loadedSchemas, function(loadedSchema, asyncCallback){
     if ("associate" in loadedSchema) {
-      model.associate(loadedSchemas);
+      loadedSchema.associate(loadedSchemas);
     }
-    model.sync({force: true}).then(function(){
+    loadedSchema.sync(/*{force: true}*/).then(function(){
       asyncCallback();
     });
   }, function(){

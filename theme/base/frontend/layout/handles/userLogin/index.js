@@ -4,9 +4,9 @@ module.exports = {
     "@actions": [
       {
         "@addChildBlock": {
-          "name": "userRegister",
+          "name": "userLogin",
           "type": "coreHtml",
-          "template": "userRegister.html",
+          "template": "userLogin.html",
           "blocks": []
         }
       }

@@ -1,4 +1,5 @@
-var Sequelize = require('sequelize');
+var Sequelize = require('sequelize'),
+    moment = require('moment');
 
 module.exports = function(sequelize){
 
@@ -38,8 +39,23 @@ module.exports = function(sequelize){
   }, {
     classMethods: {
       associate: function(models){
-        post.belongsTo(models.user, {as: 'author'});
+
+        post.belongsTo(models.user, {as: 'author', foreignKey: 'userId'});
         post.belongsTo(models.category);
+
+        post.addHook('beforeFind', function(options){
+          options.include = [{model: models.user, as: 'author', attributes: {exclude: ['password','updatedAt']}}];
+          return options;
+        });
+
+      }
+    },
+    getterMethods: {
+      postDate: function(){
+        return moment(this.updatedAt).format();
+      },
+      fromDate: function(){
+        return moment(this.updatedAt).fromNow();
       }
     }
   });

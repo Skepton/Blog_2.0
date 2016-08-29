@@ -20,17 +20,12 @@ module.exports = {
     {
       "path": "/admin",
       "conditional":"isAdmin",
-      "handles": ['default','admin']
-    },
-    {
-      "path": "/admin",
-      "conditional":"isAdmin",
-      "handles": ['default','admin']
+      "handles": ['admin','admin/postCenter']
     },
     {
       "path": "/admin/composer/:hashid",
       "conditional":"isAdmin",
-      "handles": ['default','admin']
+      "handles": ['admin']
     }
   ],
   "post": [

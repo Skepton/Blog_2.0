@@ -1,0 +1,27 @@
+
+{% for article in data %}
+
+  {# Print Headline of Article #}
+  {% if article.body %}
+      <h2 class="headline truncate">{{article.headline}}</h2>
+  {% else %}
+      <h2 class="headline truncate">Untitled</h2>
+  {% endif %}
+
+  {# Print Headline of Article #}
+  {% if article.headline %}
+      <p class="body truncate">{{article.body|truncate(64, True)}}</p>
+  {% else %}
+      <p class="body truncate">This could be the start of the article</p>
+  {% endif %}
+
+  <div class="post-info">
+    <span class="author">{{article.author.displayname}}</span>
+    <span class="date">{{article.postDate}}</span>
+  </div>
+
+{% else %}
+
+  <p>No articles written yet!</p>
+
+{% endfor %}

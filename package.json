@@ -4,9 +4,6 @@
   "main": "index.js",
   "description": "Modular, extendable version of my blog platform",
   "author": "Anton Lantz <anton@trollwebsolutions.se>",
-  "scripts": {
-    "preinstall": "node bin/preinstall"
-  },
   "dependencies": {
     "nunjucks":"*",
     "path":"*",
@@ -26,6 +23,7 @@
     "passport": "*",
     "passport-local": "*",
     "winston": "*",
+    "moment": "*",
     "json_merger": "*"
   }
 }

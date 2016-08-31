@@ -1,0 +1,23 @@
+{{data|dump}}
+
+<div id="editor" class="composer">
+  <form action="/admin/composer/save/{{data.hashid}}" method="POST">
+
+    <input id="header" type="hidden" name="header" value="{{data.header}}" />
+
+    <input id="headline" type="text" name="headline" value="{{data.headline}}" placeholder="Headline" required />
+
+    <textarea id="body" name="body" class="materialize-textarea" placeholder="Post body" required>{{data.body}}</textarea>
+
+    <input id="source" type="text" name="source" value="{{data.source}}" placeholder="Source" />
+
+    <input id="tags" type="text" name="tags" value="{{data.tags}}" placeholder="Tags" />
+
+    <input type="submit"/>
+
+  </form>
+
+  <form action="/admin/composer/delete/{{data.hashid}}" method="POST">
+    <input type="submit" value="delete"/>
+  </form>
+</div>

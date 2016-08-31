@@ -25,7 +25,7 @@ module.exports = {
     {
       "path": "/admin/composer/:hashid",
       "conditional":"isAdmin",
-      "handles": ['admin']
+      "handles": ['admin','admin/composer']
     }
   ],
   "post": [
@@ -36,6 +36,15 @@ module.exports = {
     {
       "path": "/login",
       "model": "userLogin/post"
+    },
+    //admin
+    {
+      "path":"/admin/composer/save/:hashid",
+      "model": "admin/composer/save"
+    },
+    {
+      "path":"/admin/composer/delete/:hashid",
+      "model": "admin/composer/delete"
     }
   ],
   "setupRedirects": [

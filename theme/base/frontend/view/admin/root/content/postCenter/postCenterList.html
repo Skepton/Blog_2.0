@@ -1,11 +1,11 @@
-
+<a href="/admin/new/post">New Post</a>
 {% for article in data %}
 
   {# Print Headline of Article #}
   {% if article.body %}
-      <h2 class="headline truncate">{{article.headline}}</h2>
+      <h2 class="headline truncate"><a href="admin/composer/{{article.hashid}}">{{article.headline}}</a></h2>
   {% else %}
-      <h2 class="headline truncate">Untitled</h2>
+      <h2 class="headline truncate"><a href="admin/composer/{{article.hashid}}">Untitled</a></h2>
   {% endif %}
 
   {# Print Headline of Article #}

@@ -7,7 +7,7 @@ module.exports = {
           "name": "composer",
           "type": "coreHtml",
           "model": "admin/composer",
-          "template": "composer.html",
+          "template": "admin/content/composer/composer.html",
           "blocks": []
         }
       }

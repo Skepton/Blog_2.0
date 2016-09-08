@@ -4,10 +4,10 @@ module.exports = {
     "@actions": [
       {
         "@addChildBlock": {
-          "name": "postCenter",
+          "name": "categorizerAdd",
           "type": "coreHtml",
-          "model": "admin/postCenter/list",
-          "template": "admin/content/postCenter/postCenterList.html",
+          "template": "admin/content/settings/categorizer/add/add.html",
+          "model": "admin/settings/categorizer/add",
           "blocks": []
         }
       }

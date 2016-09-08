@@ -1,4 +1,7 @@
-var Sequelize = require('sequelize');
+var Sequelize = require('sequelize'),
+    path = require('path'),
+    fallback = require(path.join(appRoot,'/lib/module/fallback')),
+    hashPassword = fallback('@module/handlePassword').hashPassword;
 
 module.exports = function(sequelize){
 
@@ -35,6 +38,18 @@ module.exports = function(sequelize){
       associate: function(models){
         user.hasMany(models.post);
         user.hasMany(models.comment);
+      }
+    },
+    setterMethods: {
+      username: function(username){
+        this.setDataValue('username', username.toLowerCase());
+        this.setDataValue('displayname', username);
+      },
+      password: function(password){
+          var self = this;
+          hashPassword(password, function(hash){
+            self.setDataValue('password', hash);
+          });
       }
     }
   });

@@ -16,7 +16,7 @@ module.exports = function(sequelize, callback){
       asyncCallback();
     });
   }, function(){
-
+    //loadedSchemas.user.create({username: 'Skepton', password: 'blog', admin: true});
     callback(loadedSchemas);
   });
 };

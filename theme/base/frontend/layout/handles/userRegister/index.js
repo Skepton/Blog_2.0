@@ -6,7 +6,7 @@ module.exports = {
         "@addChildBlock": {
           "name": "userRegister",
           "type": "coreHtml",
-          "template": "userRegister.html",
+          "template": "default/content/userRegister/userRegister.html",
           "blocks": []
         }
       }

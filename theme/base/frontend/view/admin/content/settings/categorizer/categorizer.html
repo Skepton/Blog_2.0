@@ -1,0 +1,7 @@
+{{data|dump}}
+{% for category in data %}
+  <p>{{category.title}} - <a href="/admin/settings/categorizer/add/{{category.id}}">Add child category</a/></p>
+{% else %}
+  <p>No categories</p>
+{% endfor %}
+<a href="/admin/settings/categorizer/add/root">Add root category</a>

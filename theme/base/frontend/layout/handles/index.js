@@ -3,13 +3,11 @@ module.exports = [
     "type": "get",
     "path": "/",
     "handles": ['default'],
-    "childRoutes": []
   },
   {
     "type": "get",
     "path": "/register",
     "handles": ['default','userRegister'],
-    "childRoutes": []
   },
   {
     "type": "post",
@@ -20,7 +18,6 @@ module.exports = [
     "type": "get",
     "path": "/login",
     "handles": ['default','userLogin'],
-    "childRoutes": []
   },
   {
     "type": "post",
@@ -31,7 +28,6 @@ module.exports = [
     "type": "get",
     "path": "/logout",
     "handles": ['userLogout'],
-    "childRoutes": []
   },
   //Admin
   {
@@ -49,7 +45,19 @@ module.exports = [
             "type": "get",
             "path": "/categorizer",
             "handles": ['admin','admin/settings/categorizer'],
-            "childRoutes": []
+            "childRoutes": [
+              {
+                "type": "get",
+                "path": "/add/:parentCategory",
+                "handles": ['admin','admin/settings/categorizer/add']
+              },
+              {
+                "type": "post",
+                "path": "/add/:parentCategory",
+                "model": "admin/settings/categorizer/add/post",
+                "handles": ['admin','admin/settings/categorizer/add/post']
+              }
+            ]
           }
         ]
       },
@@ -57,22 +65,21 @@ module.exports = [
         "type": "get",
         "path": "/composer/:hashid",
         "handles": ['admin','admin/composer'],
-        "childRoutes": []
       },
       {
         "type": "post",
         "path": "/composer/save/:hashid",
-        "model": "admin/composer/save"
+        "model": "admin/composer/post/save"
       },
       {
         "type": "post",
         "path": "/composer/delete/:hashid",
-        "model": "admin/composer/delete"
+        "model": "admin/composer/post/delete"
       },
       {
         "type": "setupRedirects",
         "path": "/new/post",
-        "model": "admin/setupRedirects/newPost"
+        "model": "admin/newPost/setupRedirects"
       }
     ]
   }
